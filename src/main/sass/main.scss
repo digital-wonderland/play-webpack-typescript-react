@@ -1,0 +1,38 @@
+@import "bootstrap";
+
+@mixin vertical-center($position: relative) {
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%);
+}
+$footer-height: 60px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 50px;
+  margin-bottom: $footer-height;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  background-color: #f5f5f5;
+  text-align: center;
+
+  .text {
+    font-size: 0.8em;
+
+    @include vertical-center();
+  }
+}

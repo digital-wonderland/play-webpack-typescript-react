@@ -1,0 +1,14 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Chrome Attach",
+            "type": "chrome",
+            "request": "attach",
+            "url": "http://localhost:2992/",
+            "sourceMaps": true,
+            "port": 9222,
+            "webRoot": "${workspaceRoot}/src/main/typescript"
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "EditorConfig.EditorConfig",
+        "eg2.tslint",
+        "msjsdiag.debugger-for-chrome",
+        "shinnn.stylelint"
+    ]
+}

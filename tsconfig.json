@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "target": "es6",
+        "moduleResolution": "node",
+        "baseUrl": "src/main/typescript",
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "outDir": "public/javascripts",
+        "jsx": "preserve",
+        "strictNullChecks": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker": true,
+        "useBabel": true,
+        "useCache": true
+    }
+}
