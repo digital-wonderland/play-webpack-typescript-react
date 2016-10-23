@@ -46,7 +46,8 @@ lazy val root = (project in file("."))
       crossTarget.value + "/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala",
       crossTarget.value + "/routes/main/router/Routes.scala",
       crossTarget.value + "/twirl/.*.template.scala"
-    )
+    ),
+    PlayKeys.playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value
   )
   .settings(
     libraryDependencies ++= Seq(
@@ -54,6 +55,8 @@ lazy val root = (project in file("."))
       "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
     ))
   .enablePlugins(PlayScala)
+  .disablePlugins(PlayLayoutPlugin)
+
 
 scalafmtConfig in ThisBuild := Some(file(".scalafmt"))
 

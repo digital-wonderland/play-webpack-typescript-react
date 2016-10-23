@@ -2,6 +2,8 @@
 
 A [Play](https://www.playframework.com/) seed project with some useful plugins and a state of the art frontend setup based on [Webpack 2](https://webpack.github.io/), [React](https://facebook.github.io/react/) and [TypeScript 2](https://www.typescriptlang.org/).
 
+__Note:__ If you prefer the classic layout of a Play application, check out the first commit of this repository.
+
 ## Content:
 
 ### Backend:

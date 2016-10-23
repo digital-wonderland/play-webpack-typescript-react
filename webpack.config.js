@@ -23,7 +23,7 @@ var config = {
     // Output the bundled JS to dist/app.js
     output: {
         filename: 'app.js',
-        path: path.resolve('public/javascripts'),
+        path: path.resolve('src/main/public/js'),
         publicPath: '/assets/javascripts/',
         devtoolModuleFilenameTemplate: '[absolute-resource-path]'
     },
@@ -65,7 +65,7 @@ var config = {
         })
     ],
     devServer: {
-        contentBase: path.resolve('public'),
+        contentBase: path.resolve('src/main/public'),
         // publicPath: '/assets/',
         hot: true,
         //historyApiFallback: true,
@@ -87,7 +87,7 @@ if (process.env.NODE_ENV === 'production') {
             'NODE_ENV': JSON.stringify('production')
         }
     }));
-    config.plugins.push(new ExtractTextPlugin({ filename: '../stylesheets/main.css' }));
+    config.plugins.push(new ExtractTextPlugin({ filename: '../css/main.css' }));
     config.plugins.push(new StyleLintPlugin({
         context: 'src/main/sass',
         files: '**.scss',
