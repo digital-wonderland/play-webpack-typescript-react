@@ -13,8 +13,8 @@
     "stylelint": "stylelint src/main/sass/**.scss --syntax scss",
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Stephan Kleine",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "15.1.32",
     "@types/node": "6.0.45",
