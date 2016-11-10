@@ -47,6 +47,7 @@ lazy val root = (project in file("."))
       crossTarget.value + "/routes/main/router/Routes.scala",
       crossTarget.value + "/twirl/.*.template.scala"
     ),
+    PlayKeys.playRunHooks += WebpackDevServer(baseDirectory.value, streams.value.log),
     PlayKeys.playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value
   )
   .settings(
@@ -56,6 +57,7 @@ lazy val root = (project in file("."))
     ))
   .enablePlugins(PlayScala)
   .disablePlugins(PlayLayoutPlugin)
+  .enablePlugins(Webpack)
 
 
 scalafmtConfig in ThisBuild := Some(file(".scalafmt"))

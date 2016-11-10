@@ -23,8 +23,8 @@ var config = {
     // Output the bundled JS to dist/app.js
   output: {
     filename: 'app.js',
-    path: path.resolve('src/main/public/js'),
-    publicPath: '/assets/javascripts/',
+    path: path.resolve('target/web/webpack/js'),
+    publicPath: '/assets/js/',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
   resolve: {
@@ -65,10 +65,7 @@ var config = {
     })
   ],
   devServer: {
-    contentBase: path.resolve('src/main/public'),
-        // publicPath: '/assets/',
     hot: true,
-        // historyApiFallback: true,
     inline: true,
     stats: { colors: true },
     proxy: {
