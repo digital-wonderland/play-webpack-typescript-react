@@ -1,6 +1,6 @@
 # Play Framework, Webpack 2, TypeScript 2, React with Hot Module Reloading, ...
 
-A [Play](https://www.playframework.com/) seed project with some useful plugins and a state of the art frontend setup based on [Webpack 2](https://webpack.github.io/), [React](https://facebook.github.io/react/) and [TypeScript 2](https://www.typescriptlang.org/).
+A [Play](https://www.playframework.com/) seed project with some useful plugins and a state of the art frontend setup based on [Webpack 2](https://webpack.github.io/), [TypeScript 2](https://www.typescriptlang.org/) and [React](https://facebook.github.io/react/).
 
 __Note:__ If you prefer the classic layout of a Play application, check out the first commit of this repository.
 
@@ -30,69 +30,13 @@ __Note:__ If you prefer the classic layout of a Play application, check out the 
 
 ## Usage:
 
-__Note:__ Since the build process is split between [sbt](http://www.scala-sbt.org/) and [Webpack](https://webpack.github.io/), you must always run one process for the backend and one for the frontend.
+```Webpack``` is fully integrated into ```sbt```.
 
-### Backend:
+Whenever you run ```Play``` in _development mode_ (via ```run```) it will listen to [http://localhost:9000](http://localhost:9000) and ```webpack-dev-server``` will proxy this at [http://localhost:2992](http://localhost:2992).
 
-It is a standard [Play Framework](https://www.playframework.com/) setup. Simply run
+Whenever you run ```Play``` in _production mode_ (via ```dist```, ```stage``` or ```start```) ```webpack``` will generate optimized builds, which get included automatically (including asset fingerprinting).
 
-```
-$ sbt
-```
-
-to start ```sbt``` and then
-
-```
-> run
-```
-
-to start the [Play Framework](https://www.playframework.com/) application which will listen to [http://localhost:9000/](http://localhost:9000/).
-
-To create a release you first want to build a frontend release (see bellow), to generate any _CSS_ and _Javascript_, and then follow your normal procedure for [Play Framework](https://www.playframework.com/) applications.
-
-Regarding the plugins: [scalafmt](https://olafurpg.github.io/scalafmt/), [linter](https://github.com/HairyFotr/linter) and [wartremover](https://github.com/puffnfresh/wartremover) are integrated into compilation. [scapegoat](https://github.com/sksamuel/scapegoat) must be run manually by running ```scapegoat``` within ```sbt```.
-
-### Frontend:
-
-#### Installation of any dependencies:
-
-First you have to install all dependencies either by running
-
-```
-$ npm install
-```
-
-or
-
-```
-$ yarn install
-```
-
-(the later is preferred since it uses [yarn](https://yarnpkg.com/) which is faster and caches dependencies - similiar to Mavens or sbts cache - locally).
-
-This only needs to be done once at the beginning or whenever you change anything within ```package.json```.
-
-#### Development:
-
-For normal development run
-
-```
-$ npm start
-```
-
-which will start a [Webpack Dev Server](https://webpack.github.io/docs/webpack-dev-server.html) listening to [http://localhost:2992/](http://localhost:2992/) and working as a proxy for your [Play](https://www.playframework.com/) application running at [http://localhost:9000/](http://localhost:9000/) which also handles hot module reloading for [React](https://facebook.github.io/react/) applications.
-
-Now you should have a working application when visiting [http://localhost:2992/](http://localhost:2992/).
-
-#### Building a release:
-
-Run
-
-```
-$ npm run build
-```
-
-to actually generate the _CSS_ and _Javascript_ files with applied optimizations. They will get put into the proper place, so they get picked up when you then build a [Play Framework](https://www.playframework.com/) release via [sbt](http://www.scala-sbt.org/).
+The plugins [scalafmt](https://olafurpg.github.io/scalafmt/), [linter](https://github.com/HairyFotr/linter) and [wartremover](https://github.com/puffnfresh/wartremover) are integrated into compilation. [scapegoat](https://github.com/sksamuel/scapegoat) must be run manually by running ```scapegoat``` within ```sbt```.
 
 #### Testing:
 
