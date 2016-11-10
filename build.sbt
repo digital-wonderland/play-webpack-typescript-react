@@ -48,7 +48,8 @@ lazy val root = (project in file("."))
       crossTarget.value + "/twirl/.*.template.scala"
     ),
     PlayKeys.playRunHooks += WebpackDevServer(baseDirectory.value, streams.value.log),
-    PlayKeys.playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value
+    PlayKeys.playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value,
+    pipelineStages := Seq(webpack, digest)
   )
   .settings(
     libraryDependencies ++= Seq(
