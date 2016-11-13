@@ -49,7 +49,7 @@ lazy val root = (project in file("."))
     ),
     PlayKeys.playRunHooks += WebpackDevServer(baseDirectory.value, streams.value.log),
     PlayKeys.playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value,
-    pipelineStages := Seq(webpack, digest)
+    pipelineStages := Seq(webpack, digest, gzip)
   )
   .settings(
     libraryDependencies ++= Seq(
