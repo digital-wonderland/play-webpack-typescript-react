@@ -19,6 +19,7 @@ __Note:__ If you prefer the classic layout of a Play application, check out the 
 ### Frontend:
 
 * [Webpack 2](https://webpack.github.io/)
+* [Browsersync](https://browsersync.io/)
 * [TypeScript 2](https://www.typescriptlang.org/)
 * [React](https://facebook.github.io/react/) (with hot module reloading via [React Hot Loader 3](https://github.com/gaearon/react-hot-loader))
 * [Awesome TypeScript Loader 2](https://github.com/s-panferov/awesome-typescript-loader) (which includes caching)
@@ -34,7 +35,9 @@ __Note:__ If you prefer the classic layout of a Play application, check out the 
 
 Whenever you run ```Play``` in _development mode_ (via ```run```) it will listen to [http://localhost:9000](http://localhost:9000) and ```webpack-dev-server``` will proxy this at [http://localhost:2992](http://localhost:2992).
 
-Whenever you run ```Play``` in _production mode_ (via ```dist```, ```stage``` or ```start```) ```webpack``` will generate optimized builds, which get included automatically (including asset fingerprinting).
+[Browsersync](https://browsersync.io/) will proxy ```webpack-dev-server``` at [http://localhost:3000](http://localhost:3000) with its UI being available at [http://localhost:3001](http://localhost:3001) and [http://0.0.0.0:3000](http://0.0.0.0:3000) being the external address.
+
+Whenever you run ```Play``` in _production mode_ (via ```dist```, ```stage``` or ```start```) ```webpack``` will generate optimized builds, which get included automatically (including asset fingerprinting and gzipping).
 
 The plugins [scalafmt](https://olafurpg.github.io/scalafmt/), [linter](https://github.com/HairyFotr/linter) and [wartremover](https://github.com/puffnfresh/wartremover) are integrated into compilation. [scapegoat](https://github.com/sksamuel/scapegoat) must be run manually by running ```scapegoat``` within ```sbt```.
 

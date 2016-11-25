@@ -4,6 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var StyleLintPlugin = require('stylelint-webpack-plugin')
 var WebpackNotifierPlugin = require('webpack-notifier')
 var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 // PostCSS plugins
 var autoprefixer = require('autoprefixer')
@@ -100,6 +101,13 @@ if (process.env.NODE_ENV === 'production') {
   config.devtool = 'source-map'
   config.module.rules.push({ test: /\.scss$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap'] })
   config.plugins.push(new ForkCheckerPlugin())
+  config.plugins.push(new BrowserSyncPlugin({
+    host: '0.0.0.0',
+    port: 3000,
+    proxy: 'http://localhost:2992'
+  }, {
+    reload: false
+  }))
 }
 
 module.exports = config
