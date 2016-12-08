@@ -26,7 +26,7 @@ lazy val commonSettings = Seq(
   ),
   scapegoatVersion := "1.2.1",
   wartremoverErrors ++= Warts.unsafe,
-  crossScalaVersions := Seq("2.11.8", "2.12.0-RC2")
+  crossScalaVersions := Seq("2.11.8", "2.12.1")
 )
 
 lazy val root = (project in file("."))
