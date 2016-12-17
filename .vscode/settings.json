@@ -1,5 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "stylelint.enable": true,
+    "tslint.exclude": ["**/*.js"],
     "typescript.tsdk": "./node_modules/typescript/lib"
 }
