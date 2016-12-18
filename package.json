@@ -9,7 +9,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config.js",
     "start": "webpack-dev-server --config webpack.config.js --progress --host 0.0.0.0 --port 2992 --inline --hot",
-    "stylefmt": "stylefmt --recursive src/main/sass",
+    "stylefmt": "stylefmt --recursive src/main/sass/**.scss",
     "stylelint": "stylelint src/main/sass/**.scss --syntax scss",
     "test": "jest"
   },
@@ -44,7 +44,9 @@
     "react-hot-loader": "3.0.0-beta.6",
     "sass-loader": "4.0.2",
     "style-loader": "0.13.1",
+    "stylefmt": "^5.0.3",
     "stylefmt-loader": "1.0.1",
+    "stylelint": "^7.6.0",
     "stylelint-config-standard": "14.0.0",
     "stylelint-webpack-plugin": "0.4.0",
     "tsfmt-loader": "0.0.1",
