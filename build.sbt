@@ -24,7 +24,7 @@ lazy val commonSettings = Seq(
     "org.scala-lang" % "scala-library" % scalaVersion.value,
     "org.scala-lang" % "scala-reflect" % scalaVersion.value
   ),
-  scapegoatVersion := "1.2.1",
+  scapegoatVersion := "1.3.0",
   wartremoverErrors ++= Warts.unsafe,
   crossScalaVersions := Seq("2.11.8", "2.12.1")
 )
@@ -61,6 +61,4 @@ lazy val root = (project in file("."))
   .enablePlugins(Webpack)
 
 
-scalafmtConfig in ThisBuild := Some(file(".scalafmt"))
-
-addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.15")
+addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.17")

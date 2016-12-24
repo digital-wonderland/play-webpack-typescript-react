@@ -7,7 +7,7 @@ import "main.scss";
 
 ReactDOM.render(
     <HelloWorld />,
-    document.getElementsByClassName("starter-template")[0]
+    document.getElementsByClassName("starter-template")[0],
 );
 
 // Tell Typescript that there is a global variable called module
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV !== "production") {
 
             ReactDOM.render(
                 <AppContainer><HelloWorld /></AppContainer>,
-                document.getElementsByClassName("starter-template")[0]
+                document.getElementsByClassName("starter-template")[0],
             );
         });
     }

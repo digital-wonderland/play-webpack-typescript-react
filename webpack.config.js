@@ -3,7 +3,6 @@ var path = require('path')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var StyleLintPlugin = require('stylelint-webpack-plugin')
 var WebpackNotifierPlugin = require('webpack-notifier')
-var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 // PostCSS plugins
@@ -34,11 +33,14 @@ var config = {
         // Add 'src' to our modulesDirectories, as all our app code will live in there, so Webpack should look in there for modules
     modules: ['src/main/typescript', 'src/main/sass', 'node_modules']
   },
+  resolveLoader: {
+    modules: ['node_modules', 'web_loaders']
+  },
   module: {
     rules: [
-            { enforce: 'pre', test: /\.tsx?$/, loaders: ['tslint', 'tsfmt'], exclude: /(node_modules)/ },
+            { enforce: 'pre', test: /\.tsx?$/, loaders: ['tslint-loader', 'tsfmt-loader'], exclude: /(node_modules)/ },
             // .ts(x) files should first pass through the Typescript loader, and then through babel
-            { test: /\.tsx?$/, loaders: ['babel', 'awesome-typescript'], exclude: /(node_modules)/ }
+            { test: /\.tsx?$/, loaders: ['babel-loader', 'awesome-typescript-loader'], exclude: /(node_modules)/ }
     ]
   },
   plugins: [
@@ -99,8 +101,7 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins.push(new webpack.optimize.DedupePlugin())
 } else {
   config.devtool = 'source-map'
-  config.module.rules.push({ test: /\.scss$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap'] })
-  config.plugins.push(new ForkCheckerPlugin())
+  config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'] })
   config.plugins.push(new BrowserSyncPlugin({
     host: '0.0.0.0',
     port: 3000,
