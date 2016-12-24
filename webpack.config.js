@@ -103,7 +103,7 @@ if (process.env.NODE_ENV === 'production') {
   config.devtool = 'source-map'
   config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'] })
   config.plugins.push(new webpack.NamedModulesPlugin())
-  config.entry.app.unshift("react-hot-loader/patch")
+  config.entry.app.unshift('react-hot-loader/patch')
   config.plugins.push(new BrowserSyncPlugin({
     host: '0.0.0.0',
     port: 3000,
