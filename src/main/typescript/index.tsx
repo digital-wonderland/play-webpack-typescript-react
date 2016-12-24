@@ -20,14 +20,10 @@ if (process.env.NODE_ENV !== "production") {
         // tslint:disable-next-line:no-var-requires
         const { AppContainer } = require("react-hot-loader");
 
-        // the line bellow should work but does not
-        // module.hot.accept("./HelloWorld", () => {
-
-        // this does work since it is a catch all
-        module.hot.accept(undefined, () => {
+        module.hot.accept(["./HelloWorld"], () => {
             // If we receive a HMR request for our App container, then reload it using require
             // (we can't do this dynamically with import)
-            const HelloWorld = require("./HelloWorld.tsx").default;
+            const HelloWorld = require("./HelloWorld").default;
 
             ReactDOM.render(
                 <AppContainer><HelloWorld /></AppContainer>,
