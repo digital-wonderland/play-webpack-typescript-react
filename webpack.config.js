@@ -81,8 +81,8 @@ if (process.env.NODE_ENV === 'production') {
   config.module.rules.push({
     test: /\.scss$/,
     loader: ExtractTextPlugin.extract({
-      fallbackLoader: 'style',
-      loader: ['css', 'postcss', 'sass', 'stylefmt?config=.stylelintrc']
+      fallbackLoader: 'style-loader',
+      loader: ['css-loader', 'postcss-loader', 'sass-loader', 'stylefmt-loader?config=.stylelintrc']
     })
   })
   config.plugins.push(new webpack.DefinePlugin({
