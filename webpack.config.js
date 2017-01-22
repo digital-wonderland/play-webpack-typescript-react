@@ -23,7 +23,7 @@ var config = {
     // Output the bundled JS to dist/app.js
   output: {
     filename: 'app.js',
-    path: path.resolve('target/web/webpack/js'),
+    path: path.resolve('target', 'web', 'webpack', 'js'),
     publicPath: '/assets/js/',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
@@ -31,7 +31,7 @@ var config = {
         // Look for modules in .ts(x) files first, then .js(x)
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
         // Add 'src' to our modulesDirectories, as all our app code will live in there, so Webpack should look in there for modules
-    modules: ['src/main/typescript', 'src/main/sass', 'node_modules']
+    modules: [path.join('src', 'main', 'typescript'), path.join('src', 'main', 'sass'), 'node_modules']
   },
   resolveLoader: {
     modules: ['node_modules', 'web_loaders']
@@ -61,7 +61,7 @@ var config = {
           return [autoprefixer, cssnano]
         },
         sassLoader: {
-          includePaths: [path.resolve(__dirname, 'src', 'main', 'sass')]
+          includePaths: [path.resolve('src', 'main', 'sass')]
         },
         context: '/'
       }
@@ -90,9 +90,9 @@ if (process.env.NODE_ENV === 'production') {
       'NODE_ENV': JSON.stringify('production')
     }
   }))
-  config.plugins.push(new ExtractTextPlugin({ filename: '../css/main.css' }))
+  config.plugins.push(new ExtractTextPlugin({ filename: path.join('..', 'css', 'main.css') }))
   config.plugins.push(new StyleLintPlugin({
-    context: 'src/main/sass',
+    context: path.join('src', 'main', 'sass'),
     files: '**.scss',
     syntax: 'scss'
   }))
