@@ -98,7 +98,6 @@ if (process.env.NODE_ENV === 'production') {
   }))
   config.plugins.push(new webpack.optimize.UglifyJsPlugin())
   config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin())
-  config.plugins.push(new webpack.optimize.DedupePlugin())
 } else {
   config.devtool = 'source-map'
   config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'] })
