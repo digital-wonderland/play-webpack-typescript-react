@@ -10,7 +10,7 @@ var autoprefixer = require('autoprefixer')
 var cssnano = require('cssnano')
 
 var config = {
-    // This will be our app's entry point (webpack will look for it in the 'src' directory due to the modulesDirectory setting below). Feel free to change as desired.
+  // This will be our app's entry point (webpack will look for it in the 'src/main/typescript' directory due to the resolve.modules setting below). Feel free to change as desired.
   entry: {
     app: ['index.tsx'],
     vendors: [
@@ -20,7 +20,7 @@ var config = {
       'react-dom'
     ]
   },
-    // Output the bundled JS to dist/app.js
+  // Output the bundled JS to target/web/webpack/js/app.js
   output: {
     filename: 'app.js',
     path: path.resolve('target', 'web', 'webpack', 'js'),
@@ -28,9 +28,9 @@ var config = {
     devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
   resolve: {
-        // Look for modules in .ts(x) files first, then .js(x)
+    // Look for modules in .ts(x) files first, then .js(x)
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
-        // Add 'src' to our modulesDirectories, as all our app code will live in there, so Webpack should look in there for modules
+    // Add 'src/main/typescript' and 'src/main/sass', as all our app code will live in there, so Webpack should look in there for modules
     modules: [path.join('src', 'main', 'typescript'), path.join('src', 'main', 'sass'), 'node_modules']
   },
   resolveLoader: {
@@ -38,13 +38,12 @@ var config = {
   },
   module: {
     rules: [
-            { enforce: 'pre', test: /\.tsx?$/, loaders: ['tslint-loader', 'tsfmt-loader'], exclude: /(node_modules)/ },
-            // .ts(x) files should first pass through the Typescript loader, and then through babel
-            { test: /\.tsx?$/, loaders: ['babel-loader', 'awesome-typescript-loader'], exclude: /(node_modules)/ }
+      { enforce: 'pre', test: /\.tsx?$/, loaders: ['tslint-loader', 'tsfmt-loader'], exclude: /(node_modules)/ },
+      // .ts(x) files should first pass through the awesome-typescript loader and then through babel
+      { test: /\.tsx?$/, loaders: ['babel-loader', 'awesome-typescript-loader'], exclude: /(node_modules)/ }
     ]
   },
   plugins: [
-        // Set up the notifier plugin - you can remove this (or set alwaysNotify false) if desired
     new WebpackNotifierPlugin({ alwaysNotify: false }),
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendors', filename: 'vendor.js' }),
     new webpack.ProvidePlugin({
