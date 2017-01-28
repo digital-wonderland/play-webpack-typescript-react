@@ -4,6 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var StyleLintPlugin = require('stylelint-webpack-plugin')
 var WebpackNotifierPlugin = require('webpack-notifier')
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+var DashboardPlugin = require('webpack-dashboard/plugin')
 
 // PostCSS plugins
 var autoprefixer = require('autoprefixer')
@@ -109,6 +110,7 @@ if (process.env.NODE_ENV === 'production') {
   }, {
     reload: false
   }))
+  config.plugins.push(new DashboardPlugin({ port: 3002 }))
 }
 
 module.exports = config

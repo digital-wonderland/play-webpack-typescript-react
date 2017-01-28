@@ -9,6 +9,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack.config.js",
     "bundle-size": "webpack --json | webpack-bundle-size-analyzer",
+    "dashboard": "webpack-dashboard -p 3002",
     "start": "webpack-dev-server --config webpack.config.js --progress --host 0.0.0.0 --port 2992 --inline --hot",
     "stylefmt": "stylefmt --recursive src/main/sass/**.scss",
     "stylelint": "stylelint src/main/sass/**.scss --syntax scss",
@@ -56,6 +57,7 @@
     "typescript-formatter": "4.0.1",
     "webpack": "2.2.0",
     "webpack-bundle-size-analyzer": "2.5.0",
+    "webpack-dashboard": "0.3.0",
     "webpack-dev-server": "2.2.0",
     "webpack-notifier": "1.5.0"
   },
