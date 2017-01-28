@@ -10,6 +10,7 @@
     "build": "NODE_ENV=production webpack --config webpack.config.js",
     "bundle-size": "webpack --json | webpack-bundle-size-analyzer",
     "dashboard": "webpack-dashboard -p 3002",
+    "eslint": "eslint **.js **/*.js",
     "start": "webpack-dev-server --config webpack.config.js --progress --host 0.0.0.0 --port 2992 --inline --hot",
     "stylefmt": "stylefmt --recursive src/main/sass/**.scss",
     "stylelint": "stylelint src/main/sass/**.scss --syntax scss",
