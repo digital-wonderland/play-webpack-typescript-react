@@ -1,3 +1,5 @@
+'use strict'
+
 const tsc = require('typescript')
 const babelJest = require('babel-jest')
 
