@@ -53,6 +53,7 @@ lazy val root = (project in file("."))
   )
   .settings(
     libraryDependencies ++= Seq(
+      filters,
       ws,
       "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
     ))
