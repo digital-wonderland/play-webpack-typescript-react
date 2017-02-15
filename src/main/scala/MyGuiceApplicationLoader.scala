@@ -9,7 +9,7 @@ class MyGuiceApplicationLoader extends GuiceApplicationLoader() {
 
     val config: Config = context.environment.mode match {
       case Mode.Dev => ConfigFactory.load("application-dev.conf").withFallback(initialConfig)
-      case _ => initialConfig
+      case _        => initialConfig
     }
 
     super.builder(context).configure(new Configuration(config))

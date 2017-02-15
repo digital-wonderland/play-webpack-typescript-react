@@ -13,12 +13,12 @@ import sys.process.Process
 object NpmUtils {
 
   def installNpmModules(baseDirectory: File, log: Logger): Unit = {
-    if(!(baseDirectory / "node_modules").exists) {
+    if (!(baseDirectory / "node_modules").exists) {
       log.info("Installing node modules")
 
       val result = Process(Seq("npm", "install"), baseDirectory).!
 
-      if(result != 0)
+      if (result != 0)
         throw new Exception(s"Encountered error while installing node modules: $result")
     }
   }
@@ -50,8 +50,8 @@ object Webpack extends AutoPlugin {
         sys.error(s"Encountered error while running webpack: $result")
         throw new Exception(s"Encountered error while running webpack: $result")
       } else {
-        val targetDir = webTarget.value / "webpack"
-        val generatedFiles = ((targetDir ** "*") filter { !_.isDirectory }).get
+        val targetDir       = webTarget.value / "webpack"
+        val generatedFiles  = ((targetDir ** "*") filter { !_.isDirectory }).get
         val webpackMappings = generatedFiles pair relativeTo(targetDir)
         mappings ++ webpackMappings
       }

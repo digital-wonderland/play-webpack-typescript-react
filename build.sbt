@@ -4,22 +4,24 @@ lazy val commonSettings = Seq(
   organization := "com.example",
   version := "0.0.1",
   scalaVersion := "2.11.8",
-  scalacOptions ++= Seq("-target:jvm-1.8",
-                        "-encoding",
-                        "UTF-8",
-                        "-unchecked",
-                        "-deprecation",
-                        "-Xfatal-warnings",
-                        "-Xfuture",
-                        "-Xlint",
-                        "-Yno-adapted-args",
+  scalacOptions ++= Seq(
+    "-target:jvm-1.8",
+    "-encoding",
+    "UTF-8",
+    "-unchecked",
+    "-deprecation",
+    "-Xfatal-warnings",
+    "-Xfuture",
+    "-Xlint",
+    "-Yno-adapted-args",
 //      "-Yno-imports", // no automatic import of Predef (removes irritating implicits)
 //      "-Yno-predef",  // no automatic imports at all; all symbols must be imported explicitly
-                        "-Ywarn-dead-code",
-                        "-Ywarn-numeric-widen",
-                        "-Ywarn-value-discard",
-                        "-Ywarn-unused",
-                        "-Ywarn-unused-import"),
+    "-Ywarn-dead-code",
+    "-Ywarn-numeric-widen",
+    "-Ywarn-value-discard",
+    "-Ywarn-unused",
+    "-Ywarn-unused-import"
+  ),
   dependencyOverrides ++= Set(
     "org.scala-lang" % "scala-library" % scalaVersion.value,
     "org.scala-lang" % "scala-reflect" % scalaVersion.value
@@ -60,6 +62,5 @@ lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
   .disablePlugins(PlayLayoutPlugin)
   .enablePlugins(Webpack)
-
 
 addCompilerPlugin("org.psywerx.hairyfotr" %% "linter" % "0.1.17")

@@ -27,16 +27,21 @@ import play.filters.hosts.AllowedHostsFilter
   * each response.
   */
 @Singleton
-class Filters @Inject()(env: Environment, allowedHostsFilter: AllowedHostsFilter, csrfFilter: CSRFFilter, securityHeadersFilter: SecurityHeadersFilter, exampleFilter: ExampleFilter) extends HttpFilters {
+class Filters @Inject()(env: Environment,
+                        allowedHostsFilter: AllowedHostsFilter,
+                        csrfFilter: CSRFFilter,
+                        securityHeadersFilter: SecurityHeadersFilter,
+                        exampleFilter: ExampleFilter)
+    extends HttpFilters {
 
   override val filters: Seq[EssentialFilter] = {
     val defaultFilters = Seq(allowedHostsFilter, csrfFilter, securityHeadersFilter)
 
     //FIXME review filter application & configuration
     env.mode match {
-      case Mode.Dev => defaultFilters ++ Seq(exampleFilter)
+      case Mode.Dev  => defaultFilters ++ Seq(exampleFilter)
       case Mode.Prod => defaultFilters
-      case _ => Seq.empty
+      case _         => Seq.empty
     }
   }
 
