@@ -12,7 +12,7 @@ class IntegrationSpec extends PlaySpec with OneServerPerTest with OneBrowserPerT
 
     "work from within a browser" in {
 
-      go to ("http://localhost:" + port)
+      go to ("http://localhost:" + port.toString)
 
       pageSource must include("Hello World!")
     }
