@@ -5,6 +5,7 @@ import play.api._
 import play.api.http.HttpFilters
 import play.api.mvc._
 import play.filters.csrf.CSRFFilter
+import play.filters.headers.SecurityHeadersFilter
 
 /**
   * This class configures filters that run on every request. This
@@ -17,16 +18,17 @@ import play.filters.csrf.CSRFFilter
   *
   * Default Filters enabled in Dev or Prod mode:
   * https://www.playframework.com/documentation/latest/ScalaCsrf
+  * https://www.playframework.com/documentation/latest/SecurityHeaders
   *
   * @param env Basic environment settings for the current application.
   * @param exampleFilter A demonstration filter that adds a header to
   * each response.
   */
 @Singleton
-class Filters @Inject()(env: Environment, csrfFilter: CSRFFilter, exampleFilter: ExampleFilter) extends HttpFilters {
+class Filters @Inject()(env: Environment, csrfFilter: CSRFFilter, securityHeadersFilter: SecurityHeadersFilter, exampleFilter: ExampleFilter) extends HttpFilters {
 
   override val filters: Seq[EssentialFilter] = {
-    val defaultFilters = Seq(csrfFilter)
+    val defaultFilters = Seq(csrfFilter, securityHeadersFilter)
 
     //FIXME review filter application & configuration
     env.mode match {
