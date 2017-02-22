@@ -20,7 +20,7 @@ __Note:__ If you prefer the classic layout of a Play application, check out the 
 
 * [Webpack 2](https://webpack.github.io/) with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard)
 * [Browsersync](https://browsersync.io/)
-* [TypeScript 2](https://www.typescriptlang.org/)
+* [TypeScript 2](https://www.typescriptlang.org/) (with [TypeDoc](https://github.com/TypeStrong/typedoc))
 * [React](https://facebook.github.io/react/) (with hot module reloading via [React Hot Loader 3](https://github.com/gaearon/react-hot-loader))
 * [Awesome TypeScript Loader 2](https://github.com/s-panferov/awesome-typescript-loader) (which includes caching)
 * [TSLint](https://palantir.github.io/tslint/)

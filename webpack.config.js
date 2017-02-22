@@ -7,6 +7,7 @@ var StyleLintPlugin = require('stylelint-webpack-plugin')
 var WebpackNotifierPlugin = require('webpack-notifier')
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 var DashboardPlugin = require('webpack-dashboard/plugin')
+var TypedocWebpackPlugin = require('typedoc-webpack-plugin')
 
 // PostCSS plugins
 var autoprefixer = require('autoprefixer')
@@ -100,6 +101,12 @@ if (process.env.NODE_ENV === 'production') {
   }))
   config.plugins.push(new webpack.optimize.UglifyJsPlugin())
   config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin())
+  config.plugins.push(new TypedocWebpackPlugin({
+    jsx: 'preserve',
+    mode: 'file',
+    out: path.join('..', '..', '..', 'typedoc'),
+    target: 'es6'
+  }, ['./src/main/typescript']))
 } else {
   config.devtool = 'source-map'
   config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'] })
