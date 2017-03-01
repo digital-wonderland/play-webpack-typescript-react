@@ -18,7 +18,7 @@ module.exports = function (source, map) {
   this.cacheable()
 
   callback = this.async()
-  options = loaderUtils.parseQuery(this.query)
+  options = loaderUtils.getOptions(this) || {}
 
   loadDefaultOptions(options)
 
