@@ -109,7 +109,7 @@ if (process.env.NODE_ENV === 'production') {
   }, ['./src/main/typescript']))
 } else {
   config.devtool = 'source-map'
-  config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'] })
+  config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap', 'stylefmt-loader?config=.stylelintrc'] })
   config.plugins.push(new webpack.NamedModulesPlugin())
   config.entry.app.unshift('react-hot-loader/patch')
   config.plugins.push(new BrowserSyncPlugin({

@@ -51,10 +51,6 @@ $ npm test
 
 There are also options to generate test coverage or do ongoing testing, whenever some source file changes (similiar to ```~test``` in ```sbt```).
 
-## Know issues:
-
-* The [stylelint](http://stylelint.io/) / [stylefmt](https://github.com/morishitter/stylefmt) integration does not work properly with [Webpack Dev Server](https://webpack.github.io/docs/webpack-dev-server.html).
-
 ## Last but not least:
 
 This project has absolutely no claim to be complete or to be the single answer to everything. It merely exists cause I got tired of creating such a setup each time from scratch and because it allows for easy modification - like adding more optimizations to the frontend release builds.
