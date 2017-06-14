@@ -9,10 +9,6 @@ var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 var DashboardPlugin = require('webpack-dashboard/plugin')
 var TypedocWebpackPlugin = require('typedoc-webpack-plugin')
 
-// PostCSS plugins
-var autoprefixer = require('autoprefixer')
-var cssnano = require('cssnano')
-
 var config = {
   // This will be our app's entry point (webpack will look for it in the 'src/main/typescript' directory due to the resolve.modules setting below). Feel free to change as desired.
   entry: {
@@ -60,9 +56,6 @@ var config = {
           emitErrors: true,
           failOnHint: true
         },
-        postcss: function () {
-          return [autoprefixer, cssnano]
-        },
         sassLoader: {
           includePaths: [path.resolve('src', 'main', 'sass')]
         },
@@ -109,7 +102,7 @@ if (process.env.NODE_ENV === 'production') {
   }, ['./src/main/typescript']))
 } else {
   config.devtool = 'source-map'
-  config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap', 'stylefmt-loader?config=.stylelintrc'] })
+  config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader?sourceMap', 'sass-loader?sourceMap', 'stylefmt-loader?config=.stylelintrc'] })
   config.plugins.push(new webpack.NamedModulesPlugin())
   config.entry.app.unshift('react-hot-loader/patch')
   config.plugins.push(new BrowserSyncPlugin({

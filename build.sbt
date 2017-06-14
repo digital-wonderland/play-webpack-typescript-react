@@ -3,7 +3,7 @@ name := "play-webpack-typescript-react"
 lazy val commonSettings = Seq(
   organization := "com.example",
   version := "0.0.1",
-  scalaVersion := "2.11.8",
+  scalaVersion := "2.11.11",
   scalacOptions ++= Seq(
     "-target:jvm-1.8",
     "-encoding",
@@ -28,7 +28,7 @@ lazy val commonSettings = Seq(
   ),
   scapegoatVersion := "1.3.0",
   wartremoverErrors ++= Warts.unsafe,
-  crossScalaVersions := Seq("2.11.8", "2.12.1")
+  crossScalaVersions := Seq("2.11.11", "2.12.1")
 )
 
 lazy val root = (project in file("."))
