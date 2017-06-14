@@ -1,3 +1,5 @@
+# MODIFIED: Replace Typescript with Javascript (ES6 compatible)
+
 # Play Framework, Webpack 2, TypeScript 2, React with Hot Module Reloading, ...
 
 A [Play](https://www.playframework.com/) seed project with some useful plugins and a state of the art frontend setup based on [Webpack 2](https://webpack.github.io/), [TypeScript 2](https://www.typescriptlang.org/) and [React](https://facebook.github.io/react/).
