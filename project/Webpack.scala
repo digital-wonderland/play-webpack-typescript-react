@@ -8,7 +8,17 @@ import com.typesafe.sbt.web.SbtWeb
 import play.sbt.PlayRunHook
 import sbt._
 import sbt.Keys._
-import sys.process.Process
+
+object OsUtils {
+
+  private val isWindows = System.getProperty("os.name").toUpperCase().indexOf("WIN") >= 0
+
+  def runCommand(cmd: Seq[String], baseDirectory: File): ProcessBuilder = {
+    val fullCmd = if(isWindows) Seq("cmd", "/c") ++ cmd else cmd
+    Process(fullCmd, baseDirectory)
+  }
+
+}
 
 object NpmUtils {
 
@@ -16,13 +26,7 @@ object NpmUtils {
     if (!(baseDirectory / "node_modules").exists) {
       log.info("Installing node modules")
 
-      var result = -1
-
-      if (System.getProperty("os.name").toUpperCase().indexOf("WIN") >= 0) {
-        result = Process(Seq("cmd", "/c", "npm", "install"), baseDirectory).!
-      } else {
-        result = Process(Seq("npm", "install"), baseDirectory).!
-      }
+      val result = OsUtils.runCommand(Seq("npm", "install"), baseDirectory).!
 
       if (result != 0)
         throw new Exception(s"Encountered error while installing node modules: $result")
@@ -38,7 +42,7 @@ object Webpack extends AutoPlugin {
   override def trigger: PluginTrigger = AllRequirements
 
   object autoImport {
-    val webpack = taskKey[Pipeline.Stage]("Run webpack")
+    val webpack: TaskKey[Pipeline.Stage] = taskKey[Pipeline.Stage]("Run webpack")
   }
 
   import autoImport._
@@ -51,15 +55,7 @@ object Webpack extends AutoPlugin {
 
       log.info("Running webpack")
 
-      var result = -1
-
-      if (System.getProperty("os.name").toUpperCase().indexOf("WIN") >= 0) {
-        result = Process(Seq("cmd", "/c", "npm", "run", "build"), baseDirectory.value).!
-      } else {
-        result = Process(Seq("npm", "run", "build"), baseDirectory.value).!
-      }
-
-      //val result = Process(Seq("npm", "run", "build"), baseDirectory.value).!
+      val result = OsUtils.runCommand(Seq("npm", "run", "build"), baseDirectory.value).!
 
       if (result != 0) {
         sys.error(s"Encountered error while running webpack: $result")
@@ -90,17 +86,12 @@ object WebpackDevServer {
 
       override def afterStarted(addr: InetSocketAddress): Unit = {
         log.info("Starting webpack-dev-server")
-        if (System.getProperty("os.name").toUpperCase().indexOf("WIN") >= 0) {
-          webpackProcess = Some(Process(Seq("cmd","/c", "npm", "start"), baseDirectory).run)
-        } else {
-          webpackProcess = Some(Process(Seq("npm", "start"), baseDirectory).run)
-        }
-        //webpackProcess = Some(Process(Seq("npm", "start"), baseDirectory).run)
+        webpackProcess = Some(OsUtils.runCommand(Seq("npm", "start"), baseDirectory).run)
       }
 
       override def afterStopped(): Unit = {
         log.info("Stopping webpack-dev-server")
-        webpackProcess.map(p => p.destroy())
+        webpackProcess.foreach(p => p.destroy())
         webpackProcess = None
       }
     }
