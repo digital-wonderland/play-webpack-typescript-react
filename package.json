@@ -1,5 +1,5 @@
 {
-  "name": "play-webpack-typescript-react",
+  "name": "play-webpack-javascript-react",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -14,23 +14,17 @@
     "start": "webpack-dev-server --config webpack.config.js --progress --host 0.0.0.0 --port 2992 --inline --hot",
     "stylefmt": "stylefmt --recursive src/main/sass/**.scss",
     "stylelint": "stylelint src/main/sass/**.scss --syntax scss",
-    "test": "jest",
-    "typedoc": "typedoc --target ES6 --jsx preserve --out target/typedoc --mode file src/main/typescript"
+    "test": "jest"
   },
   "author": "Stephan Kleine",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "18.1.1",
-    "@types/node": "7.0.5",
-    "@types/react": "15.0.14",
-    "@types/react-addons-test-utils": "0.14.17",
-    "@types/react-dom": "0.14.23",
     "autoprefixer": "6.7.6",
-    "awesome-typescript-loader": "3.0.8",
     "babel-core": "6.23.1",
     "babel-jest": "19.0.0",
     "babel-loader": "6.3.2",
     "babel-preset-env": "1.2.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "6.23.0",
     "browser-sync": "2.18.8",
     "browser-sync-webpack-plugin": "1.1.4",
@@ -42,10 +36,11 @@
     "eslint-plugin-promise": "3.5.0",
     "eslint-plugin-standard": "2.1.1",
     "extract-text-webpack-plugin": "2.0.0",
-    "jest": "19.0.2",
+    "jest": "^19.0.2",
+    "node": "0.0.0",
     "node-sass": "4.5.0",
     "postcss-loader": "1.3.3",
-    "react-addons-test-utils": "15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-hot-loader": "3.0.0-beta.6",
     "sass-loader": "6.0.2",
     "style-loader": "0.13.2",
@@ -54,13 +49,6 @@
     "stylelint": "7.9.0",
     "stylelint-config-standard": "16.0.0",
     "stylelint-webpack-plugin": "0.7.0",
-    "tslint": "4.5.1",
-    "tslint-loader": "3.4.3",
-    "tslint-react": "2.4.0",
-    "typedoc": "0.5.7",
-    "typedoc-webpack-plugin": "1.1.3",
-    "typescript": "2.2.1",
-    "typescript-formatter": "5.1.0",
     "webpack": "2.2.1",
     "webpack-bundle-size-analyzer": "2.5.0",
     "webpack-dashboard": "0.3.0",
@@ -78,16 +66,14 @@
       ".*": "<rootDir>/jestPreProcessor.js"
     },
     "moduleFileExtensions": [
-      "ts",
-      "tsx",
       "js",
       "jsx"
     ],
-    "testRegex": "/src/test/typescript/.*\\.(ts|tsx|js)$",
+    "testRegex": "/src/test/javascript/.*\\.(js|jsx)$",
     "moduleDirectories": [
       "node_modules",
-      "src/main/typescript",
-      "src/test/typescript"
+      "src/main/javascript",
+      "src/test/javascript"
     ],
     "coverageDirectory": "target/jest-coverage"
   }

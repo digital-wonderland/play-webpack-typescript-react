@@ -2,6 +2,4 @@
 {
     "editor.minimap.enabled": true,
     "stylelint.enable": true,
-    "tslint.exclude": ["**/*.js"],
-    "typescript.tsdk": "./node_modules/typescript/lib"
 }

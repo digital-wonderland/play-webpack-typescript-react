@@ -7,16 +7,15 @@ var StyleLintPlugin = require('stylelint-webpack-plugin')
 var WebpackNotifierPlugin = require('webpack-notifier')
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 var DashboardPlugin = require('webpack-dashboard/plugin')
-var TypedocWebpackPlugin = require('typedoc-webpack-plugin')
 
 // PostCSS plugins
 var autoprefixer = require('autoprefixer')
 var cssnano = require('cssnano')
 
 var config = {
-  // This will be our app's entry point (webpack will look for it in the 'src/main/typescript' directory due to the resolve.modules setting below). Feel free to change as desired.
+  // This will be our app's entry point (webpack will look for it in the 'src/main/javascript' directory due to the resolve.modules setting below). Feel free to change as desired.
   entry: {
-    app: ['index.tsx'],
+    app: ['index.jsx'],
     vendors: [
       'bootstrap-sass',
       'jquery',
@@ -32,19 +31,17 @@ var config = {
     devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
   resolve: {
-    // Look for modules in .ts(x) files first, then .js(x)
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    // Add 'src/main/typescript' and 'src/main/sass', as all our app code will live in there, so Webpack should look in there for modules
-    modules: [path.join('src', 'main', 'typescript'), path.join('src', 'main', 'sass'), 'node_modules']
+    // Look for modules in .js(x) files first, then .js(x)
+    extensions: ['.js', '.jsx'],
+    // Add 'src/main/javascript' and 'src/main/sass', as all our app code will live in there, so Webpack should look in there for modules
+    modules: [path.join('src', 'main', 'javascript'), path.join('src', 'main', 'sass'), 'node_modules']
   },
   resolveLoader: {
     modules: ['node_modules', 'web_loaders']
   },
   module: {
     rules: [
-      { enforce: 'pre', test: /\.tsx?$/, loaders: ['tslint-loader', 'tsfmt-loader'], exclude: /(node_modules)/ },
-      // .ts(x) files should first pass through the awesome-typescript loader and then through babel
-      { test: /\.tsx?$/, loaders: ['babel-loader', 'awesome-typescript-loader'], exclude: /(node_modules)/ }
+      { test: /\.jsx?$/, loaders: ['babel-loader?presets[]=react,presets[]=es2015'], exclude: /(node_modules)/ }
     ]
   },
   plugins: [
@@ -56,10 +53,6 @@ var config = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-        tslint: {
-          emitErrors: true,
-          failOnHint: true
-        },
         postcss: function () {
           return [autoprefixer, cssnano]
         },
@@ -101,12 +94,6 @@ if (process.env.NODE_ENV === 'production') {
   }))
   config.plugins.push(new webpack.optimize.UglifyJsPlugin())
   config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin())
-  config.plugins.push(new TypedocWebpackPlugin({
-    jsx: 'preserve',
-    mode: 'file',
-    out: path.join('..', '..', '..', 'typedoc'),
-    target: 'es6'
-  }, ['./src/main/typescript']))
 } else {
   config.devtool = 'source-map'
   config.module.rules.push({ test: /\.scss$/, loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap', 'stylefmt-loader?config=.stylelintrc'] })
