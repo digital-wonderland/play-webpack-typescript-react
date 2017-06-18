@@ -1,5 +1,5 @@
 addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.4.0")
-addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "0.6.8")
+addSbtPlugin("com.lucidchart" % "sbt-scalafmt-coursier" % "1.6")
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.1")
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.15")

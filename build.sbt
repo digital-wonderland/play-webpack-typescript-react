@@ -28,7 +28,10 @@ lazy val commonSettings = Seq(
   ),
   scapegoatVersion := "1.3.0",
   wartremoverErrors ++= Warts.unsafe,
-  crossScalaVersions := Seq("2.11.11", "2.12.1")
+  crossScalaVersions := Seq("2.11.11", "2.12.1"),
+  scalafmtVersion in ThisBuild := "1.0.0-RC4",
+  scalafmtOnCompile in ThisBuild := true,
+  ignoreErrors in (ThisBuild, scalafmt) := false
 )
 
 lazy val root = (project in file("."))
