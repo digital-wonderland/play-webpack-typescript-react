@@ -5,11 +5,10 @@
         "moduleResolution": "node",
         "baseUrl": "src/main/typescript",
         "allowSyntheticDefaultImports": true,
-        "noImplicitAny": false,
         "sourceMap": true,
         "outDir": "public/javascripts",
         "jsx": "preserve",
-        "strictNullChecks": true
+        "strict": true
     },
     "exclude": [
         "node_modules"
