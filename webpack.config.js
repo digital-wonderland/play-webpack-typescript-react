@@ -61,7 +61,8 @@ var config = {
         },
         context: '/'
       }
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
   devServer: {
     hot: true,

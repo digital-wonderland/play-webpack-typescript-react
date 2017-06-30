@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import HelloWorld from "./HelloWorld";
+import HelloWorldOrig from "./HelloWorld";
 
 import "main.scss";
 
 ReactDOM.render(
-    <HelloWorld />,
+    <HelloWorldOrig />,
     document.getElementsByClassName("starter-template")[0],
 );
 
