@@ -3,7 +3,7 @@ name := "play-webpack-typescript-react"
 lazy val commonSettings = Seq(
   organization := "com.example",
   version := "0.0.1",
-  scalaVersion := "2.11.11",
+  scalaVersion := "2.12.1", // stick with 2.12.1 until https://github.com/scala/bug/issues/10270 is fixed
   scalacOptions ++= Seq(
     "-target:jvm-1.8",
     "-encoding",
@@ -58,9 +58,9 @@ lazy val root = (project in file("."))
   )
   .settings(
     libraryDependencies ++= Seq(
-      filters,
+      guice,
       ws,
-      "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
+      "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % Test
     ))
   .enablePlugins(PlayScala)
   .disablePlugins(PlayLayoutPlugin)

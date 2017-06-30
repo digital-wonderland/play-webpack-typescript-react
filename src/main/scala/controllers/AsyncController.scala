@@ -2,7 +2,6 @@ package controllers
 
 import akka.actor.ActorSystem
 import javax.inject._
-import play.api._
 import play.api.mvc._
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.concurrent.duration._
@@ -19,7 +18,8 @@ import scala.concurrent.duration._
   */
 @SuppressWarnings(Array("org.wartremover.warts.NonUnitStatements"))
 @Singleton
-class AsyncController @Inject()(actorSystem: ActorSystem)(implicit exec: ExecutionContext) extends Controller {
+class AsyncController @Inject()(cc: ControllerComponents, actorSystem: ActorSystem)(implicit exec: ExecutionContext)
+    extends AbstractController(cc) {
 
   /**
     * Create an Action that returns a plain text message after a delay
@@ -37,7 +37,7 @@ class AsyncController @Inject()(actorSystem: ActorSystem)(implicit exec: Executi
 
   private def getFutureMessage(delayTime: FiniteDuration): Future[String] = {
     val promise: Promise[String] = Promise[String]()
-    actorSystem.scheduler.scheduleOnce(delayTime) { promise.success("Hi!"); () }
+    actorSystem.scheduler.scheduleOnce(delayTime) { promise.success("Hi!"); () }(actorSystem.dispatcher)
     promise.future
   }
 

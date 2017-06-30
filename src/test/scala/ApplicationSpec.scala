@@ -1,4 +1,5 @@
-import org.scalatestplus.play._
+import org.scalatestplus.play.PlaySpec
+import org.scalatestplus.play.guice.GuiceOneAppPerTest
 import play.api.test._
 import play.api.test.Helpers._
 
@@ -12,7 +13,7 @@ import play.api.test.Helpers._
     "org.wartremover.warts.NonUnitStatements",
     "org.wartremover.warts.OptionPartial"
   ))
-class ApplicationSpec extends PlaySpec with OneAppPerTest {
+class ApplicationSpec extends PlaySpec with GuiceOneAppPerTest {
 
 //  override def withFixture(test: NoArgTest) = super.withFixture(test)
 
