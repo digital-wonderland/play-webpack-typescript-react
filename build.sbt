@@ -29,7 +29,7 @@ lazy val commonSettings = Seq(
   scapegoatVersion := "1.3.1",
   wartremoverErrors ++= Warts.unsafe,
   crossScalaVersions := Seq("2.11.11", "2.12.1"),
-  scalafmtVersion in ThisBuild := "1.0.0-RC4",
+  scalafmtVersion in ThisBuild := "1.2.0",
   scalafmtOnCompile in ThisBuild := true,
   ignoreErrors in (ThisBuild, scalafmt) := false
 )
@@ -60,7 +60,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       guice,
       ws,
-      "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.1" % Test
+      "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
     ))
   .enablePlugins(PlayScala)
   .disablePlugins(PlayLayoutPlugin)

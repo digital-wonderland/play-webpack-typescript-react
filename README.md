@@ -1,6 +1,6 @@
-# Play Framework, Webpack 2, TypeScript 2, React with Hot Module Reloading, ...
+# Play Framework, Webpack, TypeScript, React with Hot Module Reloading, ...
 
-A [Play](https://www.playframework.com/) seed project with some useful plugins and a state of the art frontend setup based on [Webpack 2](https://webpack.github.io/), [TypeScript 2](https://www.typescriptlang.org/) and [React](https://facebook.github.io/react/).
+A [Play](https://www.playframework.com/) seed project with some useful plugins and a state of the art frontend setup based on [Webpack](https://webpack.github.io/), [TypeScript](https://www.typescriptlang.org/) and [React](https://facebook.github.io/react/).
 
 __Note:__ If you prefer the classic layout of a Play application, check out the first commit of this repository.
 
@@ -18,11 +18,11 @@ __Note:__ If you prefer the classic layout of a Play application, check out the 
 
 ### Frontend:
 
-* [Webpack 2](https://webpack.github.io/) with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard)
+* [Webpack](https://webpack.github.io/) with [webpack-dashboard](https://github.com/FormidableLabs/webpack-dashboard)
 * [Browsersync](https://browsersync.io/)
-* [TypeScript 2](https://www.typescriptlang.org/) (with [TypeDoc](https://github.com/TypeStrong/typedoc))
+* [TypeScript](https://www.typescriptlang.org/) (with [TypeDoc](https://github.com/TypeStrong/typedoc))
 * [React](https://facebook.github.io/react/) (with hot module reloading via [React Hot Loader 3](https://github.com/gaearon/react-hot-loader))
-* [Awesome TypeScript Loader 2](https://github.com/s-panferov/awesome-typescript-loader) (which includes caching)
+* [Awesome TypeScript Loader](https://github.com/s-panferov/awesome-typescript-loader) (which includes caching)
 * [TSLint](https://palantir.github.io/tslint/)
 * [Jest](https://facebook.github.io/jest/) (includes test coverage)
 * [Sass](http://sass-lang.com/)
