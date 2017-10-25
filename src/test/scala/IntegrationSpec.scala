@@ -1,7 +1,5 @@
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice.GuiceOneServerPerTest
-import play.api.test._
-import play.api.test.Helpers._
 
 /**
   * add your integration spec here.

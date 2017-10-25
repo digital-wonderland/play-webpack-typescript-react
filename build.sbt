@@ -3,7 +3,7 @@ name := "play-webpack-typescript-react"
 lazy val commonSettings = Seq(
   organization := "com.example",
   version := "0.0.1",
-  scalaVersion := "2.12.1", // stick with 2.12.1 until https://github.com/scala/bug/issues/10270 is fixed
+  scalaVersion := "2.12.4",
   scalacOptions ++= Seq(
     "-target:jvm-1.8",
     "-encoding",
@@ -54,7 +54,8 @@ lazy val root = (project in file("."))
     ),
     PlayKeys.playRunHooks += WebpackDevServer(baseDirectory.value, streams.value.log),
     PlayKeys.playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value,
-    pipelineStages := Seq(webpack, digest, gzip)
+    pipelineStages := Seq(webpack, digest, gzip),
+    TwirlKeys.templateImports := Seq()
   )
   .settings(
     libraryDependencies ++= Seq(
