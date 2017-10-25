@@ -1,3 +1,6 @@
 {
-    "extends": ["tslint:latest", "tslint-react", "tslint-microsoft-contrib"]
+    "extends": ["tslint:latest", "tslint-react", "tslint-microsoft-contrib"],
+    "rules": {
+        "no-implicit-dependencies": false
+    }
 }
