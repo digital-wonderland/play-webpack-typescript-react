@@ -1,5 +1,5 @@
 {
-    "extends": ["tslint:latest", "tslint-react", "tslint-microsoft-contrib"],
+    "extends": ["tslint:latest", "tslint-react", "tslint-config-airbnb"],
     "rules": {
         "no-implicit-dependencies": false
     }

@@ -11,8 +11,8 @@ import * as React from 'react';
 // tslint:disable-next-line:no-default-export
 export default class HelloWorld extends React.Component<{}, {}> {
 
-    public render(): JSX.Element {
-        return <h1>Hello from React!</h1>;
-    }
+  public render(): JSX.Element {
+    return <h1>Hello from React!</h1>;
+  }
 
 }
